@@ -61,6 +61,7 @@ type Request struct {
 	viewObject      *gview.View            // Custom template view engine object for this response.
 	viewParams      gview.Params           // Custom template view variables for this response.
 	originUrlPath   string                 // Original URL path that passed from client.
+	handlerParseReq interface{}            // handlerParseReq is the parsed request object for the handler.
 }
 
 // staticFile is the file struct for static file service.
@@ -287,4 +288,9 @@ func (r *Request) GetHandlerResponse() interface{} {
 // GetServeHandler retrieves and returns the user defined handler used to serve this request.
 func (r *Request) GetServeHandler() *HandlerItemParsed {
 	return r.serveHandler
+}
+
+// GetHandlerParseReq retrieves and returns the parsed request object for the handler.
+func (r *Request) GetHandlerParseReq() interface{} {
+	return r.handlerParseReq
 }
